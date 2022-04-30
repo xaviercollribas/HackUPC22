@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+   
+    <div class="hero-image">
+      <div class="title-text">   
+	
+        <h1 style="font-family:Papyrus; font-size:100px; color: #c1271e;">MundiPredicter</h1> 
+            <div class ="subtitle-text">
+                <h3 style="font-family:Papyrus; font-size:25px; color: #c1271e;">Predict the appropiate selling price for your motorbike.</h3>
+            </div>
+      </div>
+    
+
+     <style>
+        
+        .title-text {
+          text-align: center;
+          position: relative;
+          top: 15%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: white;
+          background-color: #FFFFFF; 
+        }
+
+        .subtitle-text {
+          text-align: center;
+          position: relative;
+          top:20%;
+          
+          transform: translate(0%, -50%);
+          color: white;
+          background-color: #FFFFFF;
+        }
+     </style>
+
+        <div class="predictor">
+        <form action="{{ url_for('predict')}}" method="post">
+            <predictor style="color: #c1271e; font-family: sans-serif;"></style>
+
+            <h2>Enter the motorbike details </h2>
+            <h3>Brand</h3>    <input id="Marca" name="Marca" required="required">
+            <h3>Model</h3>    <input id="Model" name="Model" required="required">
+            <h3>Year from</h3>  <input id="any_ini" name="Any des de" type="number ">
+            <h3>Year to</h3>  <input id="any_fi" name="Any fins" type="number ">
+            <h3>From KM</h3>  <input id="KM_ini" name="KM des de" required="required">
+            <h3>To KM</h3>    <input id="KM_fi" name="KM fins" required="required">
+
+            
+            <h3>Fuel type</h3><br><select name="fuel" id="fuel" required="required">
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Electric">Electric</option>
+            </select>
+
+            <br><br><button id="sub" type="submit ">Serach</button>
+            <br>
+
+        </form>
+
+        <br><br><h3>{{ prediction_text }}<h3> 
+        </div>
+
+        <style>
+        .predictor {
+            position: relative;
+            transform: translate(0%, 5%);
+            height: 150%;
+                text-align: center;
+                padding: 0px;
+            font-family: cursive;
+            }
+
+            #research {
+                font-size: 18px;
+                width: 200px;
+                height: 23px;
+                top: 23px;
+                background-color: #000000;
+                max-width: 50%;
+            }
+            
+            #box {
+                border-radius: 60px;
+                border-color: 45px;
+                border-style: solid;
+                text-align: center;
+                font-size: medium;
+                position: absolute;
+                width: 700px;
+                bottom: 9%;
+                height: 850px;
+                right: 30%;
+                padding: 0px;
+                margin: 0px;
+                font-size: 14px;
+                background-color: #000000;
+                max-width: 50%;
+            }
+            
+            #fuel {
+                width: 83px;
+                height: 43px;
+                text-align: center;
+                border-radius: 14px;
+                font-size: 20px;
+                background-color: #FFFFFF;
+                max-width: 50%;
+            }
+            
+            #fuel:hover {
+                background-color: #FFFFFF;
+                max-width: 50%;
+            }
+            
+            #research {
+                width: 150px;
+                height: 43px;
+                text-align: center;
+                border-radius: 14px;
+                font-size: 18px;
+                background-color: #000000;
+                max-width: 50%;
+            }
+            
+            #research:hover {
+                background-color: #000000;
+                max-width: 50%;
+            }
+            
+            #resea {
+                width: 99px;
+                height: 43px;
+                text-align: center;
+                border-radius: 14px;
+                font-size: 18px;
+                background-color: #FFFFFF;
+                max-width: 50%;
+            }
+            
+            #resea:hover {
+                background-color: #FFFFFF;
+                max-width: 50%;
+            }
+            
+            #sub {
+                background-color: #FFFFFF;
+                font-family:'Courier New', monospace;
+                font-weight: bold;
+                width: 180px;
+                height: 60px;
+                text-align: center;
+                border-radius: 20px;
+                font-size: 18px;
+                color: #000000;
+            }
+            
+            #sub:hover {
+                background-color: #FFFFFF;
+            }
+            
+            #Marca {
+                border-radius: 14px;
+                height: 25px;
+                font-size: 20px;
+                text-align: center;
+                background-color: #FFFFFF;
+                position: relative;
+                max-width: 50%;
+                
+            }
+
+            #Model {
+                border-radius: 14px;
+                height: 25px;
+                font-size: 20px;
+                text-align: center;
+                background-color: #FFFFFF;
+                max-width: 50%;
+            }
+
+            #any_ini {
+                border-radius: 14px;
+                height: 25px;
+                font-size: 20px;
+                text-align: center;
+                background-color: #FFFFFF;
+                max-width: 50%;
+            }
+            
+            #any_fi {
+                border-radius: 14px;
+                height: 25px;
+                font-size: 20px;
+                text-align: center;
+                background-color: #FFFFFF;
+                max-width: 50%;
+            }
+            
+            #KM_ini {
+                border-radius: 14px;
+                height: 25px;
+                font-size: 20px;
+                text-align: center;
+                background-color: #FFFFFF;
+                max-width: 50%;
+            }
+            
+            #KM_fi {
+                border-radius: 14px;
+                height: 25px;
+                font-size: 20px;
+                text-align: center;
+                background-color: #FFFFFF;
+                max-width: 50%;
+            }
+        </style>
+    </div>
+    <style>
+    .hero-image {
+          background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/static/banner-motorbikes.png');
+          height: 125%;
+          transform: translate(0%, 0%);
+          background-position: bottom;
+          background-repeat: no-repeat;
+          background-size: cover;
+          position: relative;
+          
+        }
+    body, html {
+        height: 100%;
+        transform: translate(0%, -5%);
+        position: relative;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    </style>
+</body>
+
+</html>
